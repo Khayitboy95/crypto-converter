@@ -6,19 +6,17 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { TCoin } from '../types';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    currencyIcon: {
-      width: "18px",
-      height: "auto"
-    }
-  })
-);
 
-const CryptoTable = ({coins}) => {
-    const classes = useStyles();
+
+interface ICryptoTable {
+  items: TCoin[];
+  classes: any;
+}
+
+
+const CryptoTable : React.FC<ICryptoTable> = ({classes, items}) => {
     return (
         <TableContainer component={Paper}>
                 <Table aria-label="simple table">
@@ -32,7 +30,7 @@ const CryptoTable = ({coins}) => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {coins.map((coin) => (
+                    {items.map((coin) => (
                       <TableRow key={coin.name}>
                         <TableCell align="left"><img className={classes.currencyIcon} src={coin.imageUrl} alt={`${coin.fullName} icon`}/></TableCell>
                         <TableCell align="left">{coin.name}</TableCell>

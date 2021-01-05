@@ -4,31 +4,14 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: "center",
-      color: theme.palette.text.secondary,
-    },
-    cryptoInputBox: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    currencyInput: {
-      minWidth: "calc(100% - 100px)",
-      padding: theme.spacing(1),
-    },
-    currencyType: { minWidth: "100px", padding: theme.spacing(1) },
-  })
-);
 
-const ConverterBlock = () => {
-    const classes = useStyles();
+interface IConverterBlock {
+  classes: any;
+}
+
+const ConverterBlock : React.FC<IConverterBlock> = ({classes}) => {
     return (
         <Paper className={classes.paper}>
               <div className={classes.cryptoInputBox}>

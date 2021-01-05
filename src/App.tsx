@@ -1,42 +1,11 @@
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-
+import { TCoin } from './types';
 import axios from 'axios';
 import { useState, useEffect } from "react";
-import { type } from "os";
 import CryptoTable from "./components/CryptoTable";
 import ConverterBlock from "./components/ConverterBlock";
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: { padding: theme.spacing(10) },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: "center",
-      color: theme.palette.text.secondary,
-    },
-    cryptoInputBox: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    currencyInput: {
-      minWidth: "calc(100% - 100px)",
-      padding: theme.spacing(1),
-    },
-    currencyType: { minWidth: "100px", padding: theme.spacing(1) },
-  })
-);
-
-type TCoin = {
-  name: string;
-  fullName: string;
-  imageUrl: string;
-  price: number;
-  volume24Hour: number;
-}
-
+import useStyles from "./styles";
 
 function App() {
 
@@ -64,10 +33,10 @@ function App() {
       <div className="App">
         <Grid container spacing={3}>
           <Grid item xs={8}>
-            <CryptoTable coins={coins} />
+            <CryptoTable items={coins} classes={classes} />
           </Grid>
           <Grid item xs={4}>
-            <ConverterBlock />
+            <ConverterBlock classes={classes} />
           </Grid>
         </Grid>
       </div>
